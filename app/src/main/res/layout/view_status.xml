@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/box_status_background">
+    <TextView
+        android:id="@+id/info_mark"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/info_mark"
+        android:backgroundTint="@color/normal_gray"/>
+    <TextView
+        android:id="@+id/text_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_weight="1"
+        android:includeFontPadding="false"
+        android:textColor="@color/dim_gray"
+        android:gravity="center|center_vertical"
+        android:text="@string/status_default_text"/>
+</merge>

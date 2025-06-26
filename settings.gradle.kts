@@ -10,8 +10,15 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://artifact.bytedance.com/repository/pangle/")
+        }
+        maven {
+            url = uri("https://nexus.adforus.com/repository/cubid")
+        }
     }
 }
 
 rootProject.name = "CubidSDKSample"
 include(":app")
+include(":app-java")
