@@ -1,6 +1,6 @@
 # CuBid SDK (v3) For Android
 ## 변경사항
-- [버전 변경 기록](https://github.com/rnd-adforus/CubidSDKSample?tab=readme-ov-file)
+- [버전 변경 기록](https://github.com/rnd-adforus/CubidSDKSample/releases)
 
 ## 지원
 - 기본 요건
