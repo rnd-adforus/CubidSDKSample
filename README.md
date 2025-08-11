@@ -67,8 +67,8 @@ dependencyResolutionManagement {
 //[build.gradle.kts] - Kotlin
 dependencies {
 	implementation("com.adforus.sdk:cubid:1.0.0")  // Core Module - required
-	implementation("com.adforus.sdk:adsu:2.0.0")   // Adapter Module
-	implementation("com.adforus.sdk:cubex:1.0.0")  // Adapter Module
+	implementation("com.adforus.sdk:adsu:2.0.1")   // Adapter Module
+	implementation("com.adforus.sdk:cubex:1.0.1")  // Adapter Module
 	implementation("com.adforus.sdk:upan:1.0.0")   // Adapter Module
 }
 ```
@@ -77,8 +77,8 @@ dependencies {
 //[build.gradle] - Groovy
 dependencies {
 	implementation 'com.adforus.sdk:cubid:1.0.0'  // Core Module - required
-	implementation 'com.adforus.sdk:adsu:2.0.0'   // Adapter Module 
-	implementation 'com.adforus.sdk:cubex:1.0.0'  // Adapter Module
+	implementation 'com.adforus.sdk:adsu:2.0.1'   // Adapter Module 
+	implementation 'com.adforus.sdk:cubex:1.0.1'  // Adapter Module
 	implementation 'com.adforus.sdk:upan:1.0.0'   // Adapter Module
 }
 ```
