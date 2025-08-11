@@ -35,6 +35,8 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.8.0")
@@ -42,8 +44,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.1")
 
     implementation("com.adforus.sdk:cubid:1.0.0")
-    implementation("com.adforus.sdk:cubex:1.0.0")
-    implementation("com.adforus.sdk:adsu:2.0.0")
+    implementation("com.adforus.sdk:cubex:1.0.1")
+    implementation("com.adforus.sdk:adsu:2.0.1")
     implementation("com.adforus.sdk:upan:1.0.0")
 
     testImplementation("junit:junit:4.13.2")
