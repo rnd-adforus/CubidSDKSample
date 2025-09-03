@@ -25,6 +25,13 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -43,8 +50,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.0.1")
 
-    implementation("com.adforus.sdk:cubid:1.0.0")
-    implementation("com.adforus.sdk:cubex:1.0.1")
+    implementation("com.adforus.sdk:cubid:1.0.1")
+    implementation("com.adforus.sdk:cubex:1.1.0")
     implementation("com.adforus.sdk:adsu:2.0.1")
     implementation("com.adforus.sdk:upan:1.0.0")
 
