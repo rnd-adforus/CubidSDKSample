@@ -170,6 +170,10 @@ cubidBanner?.setBannerListener(listener = object : CubidBannerListener {
     override fun onClick() {
         // 광고 클릭
     }
+   
+    override fun onDisplay() {
+       // 광고 표시
+    }
 })
 
 cubidBanner?.setSize(CubidSize.TYPE_320X50) 
@@ -195,6 +199,10 @@ cubidBanner.setBannerListener(new CubidBannerListener() {
     public void onClick() {
         // 광고 클릭
     }
+   @Override
+   public void onDisplay() {
+       // 광고 표시
+   }
 });
 cubidBanner.setSize(CubidSize.TYPE_320X50);
 cubidBanner.loadAd();
@@ -261,7 +269,7 @@ cubidNative = CubidNative.Builder(context = this, placement = "YOUR_PLACEMENT_ID
     .build()
 
 cubidNative?.setNativeListener(listener = object : CubidNativeAdListener {
-    override fun onLoaded(view: View) {
+    override fun onLoaded(view: CubidNativeView) {
        // 광고 로드 성공
         nativeLoadView = view
     }
@@ -294,7 +302,7 @@ cubidNative = new CubidNative.Builder(this, "YOUR_PLACEMENT_ID")
 
 cubidNative.setNativeListener(new CubidNativeAdListener() {
     @Override
-    public void onLoaded(View view) {
+    public void onLoaded(CubidNativeView view) {
         // 광고 로드 성공
         nativeLoadView = view;
     }
