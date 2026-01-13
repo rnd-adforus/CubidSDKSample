@@ -1,8 +1,6 @@
 package com.adforus.cubidsdksample;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -11,6 +9,8 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import com.adforus.sdk.cubid.CuBidInitListener;
@@ -22,6 +22,7 @@ import com.adforus.sdk.cubid.view.CubidInterstitial;
 import com.adforus.sdk.cubid.view.CubidInterstitialListener;
 import com.adforus.sdk.cubid.view.CubidNative;
 import com.adforus.sdk.cubid.view.CubidNativeAdListener;
+import com.adforus.sdk.cubid.view.CubidNativeView;
 import com.adforus.sdk.cubid.view.CubidReward;
 import com.adforus.sdk.cubid.view.CubidRewardListener;
 import com.adforus.sdk.cubid.view.CubidSize;
@@ -166,6 +167,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
+            public void onDisplay() {
+                bannerStatusView.setState(AdStatus.AD_DISPLAY);
+
+            }
+
+            @Override
             public void onClick() {
                 bannerStatusView.setState(AdStatus.AD_CLICK);
             }
@@ -242,15 +249,15 @@ public class MainActivity extends AppCompatActivity {
 
         cubidNative.setNativeListener(new CubidNativeAdListener() {
             @Override
-            public void onLoaded(View view) {
+            public void onLoaded(@NonNull CubidNativeView cubidNativeView) {
                 btnDisplay.setEnabled(true);
                 btnVisible.setEnabled(true);
-                btnVisible.setText(view.getVisibility() == View.VISIBLE ?
+                btnVisible.setText(cubidNativeView.getVisibility() == View.VISIBLE ?
                         getResources().getText(R.string.hide) :
                         getResources().getText(R.string.show));
 
-                nativeLoadView[0] = view;
-                btnVisible.setChecked(view.getVisibility() == View.VISIBLE);
+                nativeLoadView[0] = cubidNativeView;
+                btnVisible.setChecked(cubidNativeView.getVisibility() == View.VISIBLE);
                 nativeStateView.setState(AdStatus.AD_LOADED);
             }
 

@@ -20,6 +20,7 @@ import com.adforus.sdk.cubid.view.CubidInterstitial
 import com.adforus.sdk.cubid.view.CubidInterstitialListener
 import com.adforus.sdk.cubid.view.CubidNative
 import com.adforus.sdk.cubid.view.CubidNativeAdListener
+import com.adforus.sdk.cubid.view.CubidNativeView
 import com.adforus.sdk.cubid.view.CubidReward
 import com.adforus.sdk.cubid.view.CubidRewardListener
 import com.adforus.sdk.cubid.view.CubidSize
@@ -171,6 +172,10 @@ class MainActivity : AppCompatActivity() {
             override fun onClick() {
                 bannerStatusView.setStatus(AdStatus.AD_CLICK)
             }
+
+            override fun onDisplay() {
+                bannerStatusView.setStatus(AdStatus.AD_DISPLAY)
+            }
         })
 
         bannerButtonLoad.setOnClickListener {
@@ -248,7 +253,8 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         cubidNative?.setNativeListener(listener = object : CubidNativeAdListener {
-            override fun onLoaded(view: View) {
+
+            override fun onLoaded(view: CubidNativeView) {
                 btnDisplay.isEnabled = true
                 btnVisible.apply {
                     isEnabled = true
