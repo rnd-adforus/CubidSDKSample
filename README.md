@@ -66,20 +66,20 @@ dependencyResolutionManagement {
 ```kotlin
 //[build.gradle.kts] - Kotlin
 dependencies {
-	implementation("com.adforus.sdk:cubid:1.0.1")  // Core Module - required
-	implementation("com.adforus.sdk:adsu:2.0.1")   // Adapter Module
-	implementation("com.adforus.sdk:cubex:1.1.0")  // Adapter Module
-	implementation("com.adforus.sdk:upan:1.0.0")   // Adapter Module
+   implementation("com.adforus.sdk:cubid:1.2.0") // Core Module - required
+   implementation("com.adforus.sdk:cubex:1.3.0") // Adapter Module
+   implementation("com.adforus.sdk:adsu:2.1.0") // Adapter Module
+   implementation("com.adforus.sdk:upan:1.1.0") // Adapter Module
 }
 ```
 ###### OR
 ```groovy
 //[build.gradle] - Groovy
 dependencies {
-	implementation 'com.adforus.sdk:cubid:1.0.1'  // Core Module - required
-	implementation 'com.adforus.sdk:adsu:2.0.1'   // Adapter Module 
-	implementation 'com.adforus.sdk:cubex:1.1.0'  // Adapter Module
-	implementation 'com.adforus.sdk:upan:1.0.0'   // Adapter Module
+   implementation 'com.adforus.sdk:cubid:1.2.0' // Core Module - required
+   implementation 'com.adforus.sdk:cubex:1.3.0' // Adapter Module 
+   implementation 'com.adforus.sdk:adsu:2.1.0' // Adapter Module
+   implementation 'com.adforus.sdk:upan:1.1.0' // Adapter Module
 }
 ```
 
@@ -253,7 +253,7 @@ bannerLoadView = null;
 `Builder`의 메서드 체이닝을 통해 XML에 정의된 광고 요소(`Media`, `Headline`, `CTA` 등)의 View ID를 지정할 수 있습니다.
 
 📌 _광고 필수 요소가 누락된 경우, 광고는 정상적으로 로드되지 않습니다._  
-커스텀 [XML 레이아웃 구성 예시]()는 샘플 프로젝트 내에서 확인할 수 있습니다.
+커스텀 [XML 레이아웃 구성 예시](https://github.com/rnd-adforus/CubidSDKSample/blob/master/app/src/main/res/layout/layout_custom_native.xml)는 샘플 프로젝트 내에서 확인할 수 있습니다.
 
 `CubidNative` 인스턴스의 `loadAd()` 메서드를 호출하면, 광고 로드 성공 시 `CubidNativeAdListener`의 `onLoaded(View)` 콜백이 호출되며 광고 뷰가 전달됩니다.  
 해당 뷰를 원하는 레이아웃에 직접 추가하여 네이티브 광고를 화면에 표시할 수 있습니다.
