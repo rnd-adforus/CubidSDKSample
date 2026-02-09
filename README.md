@@ -154,6 +154,14 @@ CuBidSettings.initialize(
 `CubidBanner`는 `FrameLayout`을 상속한 광고 컨테이너이며,  `loadAd()` 호출 이후 `onLoad()` 콜백 시점에 광고 뷰가 내부에 자동으로 주입됩니다.
 광고뷰를 화면에 표시하려면 **`onLoad()` 콜백 이후에** `CubidBanner` 인스턴스를 레이아웃에 추가해 주세요.
 
+지원하는 사이즈 목록은 다음과 같습니다.
+| size | CubidSize constant |
+| :--- | :--- |
+| 320x50 | CubidSize.TYPE_320X50 |
+| 320x100 | CubidSize.TYPE_320X100 |
+| 300x250 | CubidSize.TYPE_300X250 |
+
+
 ```kotlin
 //Kotlin
 cubidBanner = CubidBanner(context = this, placementId = "YOUR_PLACEMENT_ID")
