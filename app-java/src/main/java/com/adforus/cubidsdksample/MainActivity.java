@@ -74,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
 
         initButton.setOnClickListener(v -> {
             //initialize - 초기화
+
+            // 아동을 타겟 하는 경우 초기화 전 다음 설정을 추가하여주세요.
+//            CuBidSettings.setChildMode(true);
             // 초기화 성공 콜백에서 광고 로드 시작, 초기화 성공 콜백 호출 전 만든 모든 광고 인스턴스는 유효하지 않습니다.
             CuBidSettings.initialize(this, "OQf8T68ys9", "test-cubider", new CuBidInitListener() {
                 @Override
