@@ -18,7 +18,7 @@
    4-3. [리워드](#chapter-4-3)  
    4-4. [전면](#chapter-4-4)  
 5. [Privacy](#chapter-5)   
-   5-1. [아동 타겟 설정 등](#chapter-5-1)
+   5-1. [아동 타겟 설정](#chapter-5-1)
 ---  
 
 ### 1. Configuration 설정 <a id="chapter-1"/>
