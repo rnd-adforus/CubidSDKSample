@@ -4,9 +4,7 @@
 
 ## 지원
 - 기본 요건
-- Gradle 7.0.1 이상 <br>
-- minSdkVersion 21 이상 <br>
-- OS 지원 Android 8.0 이상 <br>
+- minSdkVersion 24 이상 <br>
 
 ## 연동 가이드
 
@@ -66,20 +64,20 @@ dependencyResolutionManagement {
 ```kotlin
 //[build.gradle.kts] - Kotlin
 dependencies {
-   implementation("com.adforus.sdk:cubid:1.2.0") // Core Module - required
+   implementation("com.adforus.sdk:cubid:1.3.0") // Core Module - required
    implementation("com.adforus.sdk:cubex:1.3.0") // Adapter Module
-   implementation("com.adforus.sdk:adsu:2.1.0") // Adapter Module
-   implementation("com.adforus.sdk:upan:1.1.0") // Adapter Module
+   implementation("com.adforus.sdk:adsu:2.2.0") // Adapter Module
+   implementation("com.adforus.sdk:upan:1.2.0") // Adapter Module
 }
 ```
 ###### OR
 ```groovy
 //[build.gradle] - Groovy
 dependencies {
-   implementation 'com.adforus.sdk:cubid:1.2.0' // Core Module - required
+   implementation 'com.adforus.sdk:cubid:1.3.0' // Core Module - required
    implementation 'com.adforus.sdk:cubex:1.3.0' // Adapter Module 
-   implementation 'com.adforus.sdk:adsu:2.1.0' // Adapter Module
-   implementation 'com.adforus.sdk:upan:1.1.0' // Adapter Module
+   implementation 'com.adforus.sdk:adsu:2.2.0' // Adapter Module
+   implementation 'com.adforus.sdk:upan:1.2.0' // Adapter Module
 }
 ```
 
