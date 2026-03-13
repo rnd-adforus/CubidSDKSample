@@ -12,13 +12,13 @@
 1. [Configuration](#chapter-1)
 2. [AndroidManifest.xml](#chapter-2)
 3. [SDK 초기화](#chapter-3)
-4. [광고 호출](#chapter-4)  
+4. [광고 호출](#chapter-4)    
    4-1. [배너](#chapter-4-1)  
    4-2. [네이티브](#chapter-4-2)  
    4-3. [리워드](#chapter-4-3)  
    4-4. [전면](#chapter-4-4)  
-5. [Privacy](#chapter-5) 
-   5-1 아동 타겟 설정 등(#chapter-5-1)
+5. [Privacy](#chapter-5)   
+   5-1. [아동 타겟 설정 등](#chapter-5-1)
 ---  
 
 ### 1. Configuration 설정 <a id="chapter-1"/>
@@ -566,6 +566,7 @@ cubidInterstitial.destroy()
 cubidInterstitial = null
 ```
 <br>
+
 ### 5. Privacy <a id="chapter-5">
 #### [아동 타겟 설정 - COPPA] <a id="chapter-5-1">
 **아동용 앱 또는 아동 타겟 사용에 따라 개인정보보호를 위해 다음의 인터페이스 설정을 추가해주세요**
@@ -581,5 +582,5 @@ CuBidSettings.setChildMode(true);
 <br>
 
 ### 기타 플렛폼 지원
-- [(준비중) Flutter]()
+- [Flutter](https://github.com/rnd-adforus/Cubid-Flutter-Sample)
 - [(준비중 )ReactNative]()
