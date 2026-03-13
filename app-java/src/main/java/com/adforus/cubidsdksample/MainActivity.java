@@ -134,15 +134,12 @@ public class MainActivity extends AppCompatActivity {
 
         final CubidSize[] size = {CubidSize.TYPE_320X50};
         bannerSizeRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            switch (checkedId) {
-                case R.id.radio_320X100:
-                    size[0] = CubidSize.TYPE_320X100;
-                    break;
-                case R.id.radio_300X250:
-                    size[0] = CubidSize.TYPE_300X250;
-                    break;
-                default:
-                    size[0] = CubidSize.TYPE_320X50;
+            if(checkedId == R.id.radio_320X100) {
+                size[0] = CubidSize.TYPE_320X100;
+            }else if (checkedId == R.id.radio_300X250) {
+                size[0] = CubidSize.TYPE_300X250;
+            }else {
+                size[0] = CubidSize.TYPE_320X50;
             }
         });
 
