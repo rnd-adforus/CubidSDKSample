@@ -12,13 +12,13 @@
 1. [Configuration](#chapter-1)
 2. [AndroidManifest.xml](#chapter-2)
 3. [SDK 초기화](#chapter-3)
-4. [광고 호출](#chapter-4)  
+4. [광고 호출](#chapter-4)    
    4-1. [배너](#chapter-4-1)  
    4-2. [네이티브](#chapter-4-2)  
    4-3. [리워드](#chapter-4-3)  
    4-4. [전면](#chapter-4-4)  
-5. [Privacy](#chapter-5) 
-   5-1 아동 타겟 설정 등(#chapter-5-1)
+5. [Privacy](#chapter-5)   
+   5-1. [아동 타겟 설정](#chapter-5-1)
 ---  
 
 ### 1. Configuration 설정 <a id="chapter-1"/>
@@ -67,8 +67,8 @@ dependencyResolutionManagement {
 dependencies {
    implementation("com.adforus.sdk:cubid:1.3.0") // Core Module - required
    implementation("com.adforus.sdk:cubex:1.3.0") // Adapter Module
-   implementation("com.adforus.sdk:adsu:2.2.0") // Adapter Module
-   implementation("com.adforus.sdk:upan:1.2.0") // Adapter Module
+   implementation("com.adforus.sdk:adsu:2.2.1") // Adapter Module
+   implementation("com.adforus.sdk:upan:1.2.1") // Adapter Module
 }
 ```
 ###### OR
@@ -77,8 +77,8 @@ dependencies {
 dependencies {
    implementation 'com.adforus.sdk:cubid:1.3.0' // Core Module - required
    implementation 'com.adforus.sdk:cubex:1.3.0' // Adapter Module 
-   implementation 'com.adforus.sdk:adsu:2.2.0' // Adapter Module
-   implementation 'com.adforus.sdk:upan:1.2.0' // Adapter Module
+   implementation 'com.adforus.sdk:adsu:2.2.1' // Adapter Module
+   implementation 'com.adforus.sdk:upan:1.2.1' // Adapter Module
 }
 ```
 
@@ -105,8 +105,9 @@ dependencies {
 # 
 
 ### 3. SDK 초기화 <a id="chapter-3"/>
-광고를 호출하기 전에 반드시 `CuBidSettings.initialize()` 메서드를 호출하여 SDK를 초기화해야 합니다.  
+광고를 호출하기 전에 반드시 `CuBidSettings.initialize()` 메서드를 호출하여 SDK를 초기화해야 합니다. 
 이 메서드는 SDK 초기화를 수행하며, 성공 또는 실패 여부를 콜백을 통해 전달합니다.<br>
+호출에 필요한 파라미터 상세 정보는 [[CuBid SDK 파라미터 명세]](https://github.com/rnd-adforus/CubidSDKSample/wiki/CuBid-SDK-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EB%AA%85%EC%84%B8)에서 확인해주세요. <br>
 유럽 지역에 앱을 배포할 경우 GDPR 준수가 필수입니다. 이를 위해 사용자 동의를 받는 도구인 UMP(User Messaging Platform) 설정이 초기화 시 자동으로 적용됩니다. UMP 동의 팝업이 정상적으로 노출되도록 초기화 <b>Context 값으로 반드시 Activity</b>를 전달해 주세요.
 >⚠️ 주의: `adsu`, `cubex`, `upan` 중 하나 이상의 Adapter 라이브러리가 프로젝트에 포함되어 있지 않거나,  
 초기화 과정이 12초 이상 지연될 경우 **초기화가 실패할 수 있습니다.**
@@ -149,6 +150,7 @@ CuBidSettings.initialize(
 #   
 
 ### 4. 광고 호출 <a id="chapter-4"/>
+배너, 전면, 리워드 네이티브 타입을 다음과 같이 게재합니다. 호출에 필요한 파라미터 상세 정보는 [[CuBid SDK 파라미터 명세]](https://github.com/rnd-adforus/CubidSDKSample/wiki/CuBid-SDK-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EB%AA%85%EC%84%B8)에서 확인해주세요. <br>
 ### 4-1. 배너 <a id="chapter-4-1">
 #### [광고 로드 및 콜백 리스너 설정]
 `CubidBanner`는 `FrameLayout`을 상속한 광고 컨테이너이며,  `loadAd()` 호출 이후 `onLoad()` 콜백 시점에 광고 뷰가 내부에 자동으로 주입됩니다.
@@ -160,7 +162,6 @@ CuBidSettings.initialize(
 | 320x50 | CubidSize.TYPE_320X50 |
 | 320x100 | CubidSize.TYPE_320X100 |
 | 300x250 | CubidSize.TYPE_300X250 |
-
 
 ```kotlin
 //Kotlin
@@ -566,6 +567,7 @@ cubidInterstitial.destroy()
 cubidInterstitial = null
 ```
 <br>
+
 ### 5. Privacy <a id="chapter-5">
 #### [아동 타겟 설정 - COPPA] <a id="chapter-5-1">
 **아동용 앱 또는 아동 타겟 사용에 따라 개인정보보호를 위해 다음의 인터페이스 설정을 추가해주세요**
@@ -581,5 +583,5 @@ CuBidSettings.setChildMode(true);
 <br>
 
 ### 기타 플렛폼 지원
-- [(준비중) Flutter]()
+- [Flutter](https://github.com/rnd-adforus/Cubid-Flutter-Sample)
 - [(준비중 )ReactNative]()

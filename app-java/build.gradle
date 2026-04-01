@@ -44,7 +44,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
 
     implementation("com.adforus.sdk:cubid:1.3.0")
-    implementation("com.adforus.sdk:adsu:2.2.0")
+    implementation("com.adforus.sdk:adsu:2.2.1")
     implementation("com.adforus.sdk:cubex:1.3.0")
-    implementation("com.adforus.sdk:upan:1.2.0")
+    implementation("com.adforus.sdk:upan:1.2.1")
 }
