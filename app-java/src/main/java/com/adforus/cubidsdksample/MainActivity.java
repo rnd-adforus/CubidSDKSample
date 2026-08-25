@@ -151,30 +151,37 @@ public class MainActivity extends AppCompatActivity {
         cubidBanner.setBannerListener(new CubidBannerListener() {
             @Override
             public void onLoad() {
-                bannerStatusView.setState(AdStatus.AD_LOADED);
-                bannerLoadView[0] = cubidBanner;
+                runOnUiThread(() -> {
+                    bannerStatusView.setState(AdStatus.AD_LOADED);
+                    bannerLoadView[0] = cubidBanner;
 
-                bannerButtonDisplay.setEnabled(true);
-                bannerButtonVisible.setEnabled(true);
-                bannerButtonVisible.setChecked(bannerLoadView[0].getVisibility() == View.VISIBLE);
-                bannerButtonVisible.setText(bannerLoadView[0].getVisibility() == View.VISIBLE ? R.string.hide : R.string.show);
+                    bannerButtonDisplay.setEnabled(true);
+                    bannerButtonVisible.setEnabled(true);
+                    bannerButtonVisible.setChecked(bannerLoadView[0].getVisibility() == View.VISIBLE);
+                    bannerButtonVisible.setText(bannerLoadView[0].getVisibility() == View.VISIBLE ? R.string.hide : R.string.show);
+                });
             }
 
             @Override
             public void onLoadFail(CubidError errorInfo) {
-                failedMessage[0] = "[" + errorInfo.getCode() + "]\n" + errorInfo.getMessage();
-                bannerStatusView.setState(AdStatus.FAILED);
+                runOnUiThread(() -> {
+                    failedMessage[0] = "[" + errorInfo.getCode() + "]\n" + errorInfo.getMessage();
+                    bannerStatusView.setState(AdStatus.FAILED);
+                });
             }
 
             @Override
             public void onDisplay() {
-                bannerStatusView.setState(AdStatus.AD_DISPLAY);
-
+                runOnUiThread(() -> {
+                    bannerStatusView.setState(AdStatus.AD_DISPLAY);
+                });
             }
 
             @Override
             public void onClick() {
-                bannerStatusView.setState(AdStatus.AD_CLICK);
+                runOnUiThread(() -> {
+                    bannerStatusView.setState(AdStatus.AD_CLICK);
+                });
             }
         });
 
@@ -250,31 +257,39 @@ public class MainActivity extends AppCompatActivity {
         cubidNative.setNativeListener(new CubidNativeAdListener() {
             @Override
             public void onLoaded(@NonNull CubidNativeView cubidNativeView) {
-                btnDisplay.setEnabled(true);
-                btnVisible.setEnabled(true);
-                btnVisible.setText(cubidNativeView.getVisibility() == View.VISIBLE ?
-                        getResources().getText(R.string.hide) :
-                        getResources().getText(R.string.show));
+                runOnUiThread(() -> {
+                    btnDisplay.setEnabled(true);
+                    btnVisible.setEnabled(true);
+                    btnVisible.setText(cubidNativeView.getVisibility() == View.VISIBLE ?
+                            getResources().getText(R.string.hide) :
+                            getResources().getText(R.string.show));
 
-                nativeLoadView[0] = cubidNativeView;
-                btnVisible.setChecked(cubidNativeView.getVisibility() == View.VISIBLE);
-                nativeStateView.setState(AdStatus.AD_LOADED);
+                    nativeLoadView[0] = cubidNativeView;
+                    btnVisible.setChecked(cubidNativeView.getVisibility() == View.VISIBLE);
+                    nativeStateView.setState(AdStatus.AD_LOADED);
+                });
             }
 
             @Override
             public void onLoadFailed(CubidError error) {
-                failedMessage[0] = "[" + error.getCode() + "]\n" + error.getMessage();
-                nativeStateView.setState(AdStatus.FAILED);
+                runOnUiThread(() -> {
+                    failedMessage[0] = "[" + error.getCode() + "]\n" + error.getMessage();
+                    nativeStateView.setState(AdStatus.FAILED);
+                });
             }
 
             @Override
             public void onClick() {
-                nativeStateView.setState(AdStatus.AD_CLICK);
+                runOnUiThread(() -> {
+                    nativeStateView.setState(AdStatus.AD_CLICK);
+                });
             }
 
             @Override
             public void onImpression() {
-                nativeStateView.setState(AdStatus.AD_DISPLAY);
+                runOnUiThread(() -> {
+                    nativeStateView.setState(AdStatus.AD_DISPLAY);
+                });
             }
         });
 
@@ -357,40 +372,54 @@ public class MainActivity extends AppCompatActivity {
         cubidReward.setRewardListener(new CubidRewardListener() {
             @Override
             public void onLoad() {
-                btnShow.setEnabled(true);
-                rewardStatusView.setState(AdStatus.AD_LOADED);
+                runOnUiThread(() -> {
+                    btnShow.setEnabled(true);
+                    rewardStatusView.setState(AdStatus.AD_LOADED);
+                });
             }
 
             @Override
             public void onLoadFailed(CubidError error) {
-                failedMessage[0] = "[" + error.getCode() + "]\n" + error.getMessage();
-                rewardStatusView.setState(AdStatus.FAILED);
+                runOnUiThread(() -> {
+                    failedMessage[0] = "[" + error.getCode() + "]\n" + error.getMessage();
+                    rewardStatusView.setState(AdStatus.FAILED);
+                });
             }
 
             @Override
             public void onSkip() {
-                rewardStatusView.setState(AdStatus.AD_SKIP);
+                runOnUiThread(() -> {
+                    rewardStatusView.setState(AdStatus.AD_SKIP);
+                });
             }
 
             @Override
             public void onComplete() {
-                rewardStatusView.setState(AdStatus.AD_COMPLETE);
+                runOnUiThread(() -> {
+                    rewardStatusView.setState(AdStatus.AD_COMPLETE);
+                });
             }
 
             @Override
             public void onShow() {
-                btnShow.setEnabled(false);
-                rewardStatusView.setState(AdStatus.AD_SHOW);
+                runOnUiThread(() -> {
+                    btnShow.setEnabled(false);
+                    rewardStatusView.setState(AdStatus.AD_SHOW);
+                });
             }
 
             @Override
             public void onClick() {
-                rewardStatusView.setState(AdStatus.AD_CLICK);
+                runOnUiThread(() -> {
+                    rewardStatusView.setState(AdStatus.AD_CLICK);
+                });
             }
 
             @Override
             public void onClose() {
-                rewardStatusView.setState(AdStatus.AD_CLOSE);
+                runOnUiThread(() -> {
+                    rewardStatusView.setState(AdStatus.AD_CLOSE);
+                });
             }
         });
 
@@ -443,30 +472,40 @@ public class MainActivity extends AppCompatActivity {
         cubidInterstitial.setInterstitialListener(new CubidInterstitialListener() {
             @Override
             public void onLoaded() {
-                btnShow.setEnabled(true);
-                interstitialStatusView.setState(AdStatus.AD_LOADED);
+                runOnUiThread(() -> {
+                    btnShow.setEnabled(true);
+                    interstitialStatusView.setState(AdStatus.AD_LOADED);
+                });
             }
 
             @Override
             public void onLoadFailed(CubidError error) {
-                failedMessage[0] = "[" + error.getCode() + "]\n" + error.getMessage();
-                interstitialStatusView.setState(AdStatus.FAILED);
+                runOnUiThread(() -> {
+                    failedMessage[0] = "[" + error.getCode() + "]\n" + error.getMessage();
+                    interstitialStatusView.setState(AdStatus.FAILED);
+                });
             }
 
             @Override
             public void onShow() {
-                btnShow.setEnabled(false);
-                interstitialStatusView.setState(AdStatus.AD_SHOW);
+                runOnUiThread(() -> {
+                    btnShow.setEnabled(false);
+                    interstitialStatusView.setState(AdStatus.AD_SHOW);
+                });
             }
 
             @Override
             public void onClick() {
-                interstitialStatusView.setState(AdStatus.AD_CLICK);
+                runOnUiThread(() -> {
+                    interstitialStatusView.setState(AdStatus.AD_CLICK);
+                });
             }
 
             @Override
             public void onClose() {
-                interstitialStatusView.setState(AdStatus.AD_CLOSE);
+                runOnUiThread(() -> {
+                    interstitialStatusView.setState(AdStatus.AD_CLOSE);
+                });
             }
         });
 

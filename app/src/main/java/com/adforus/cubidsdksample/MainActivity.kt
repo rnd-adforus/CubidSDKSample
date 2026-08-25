@@ -24,6 +24,10 @@ import com.adforus.sdk.cubid.view.CubidNativeView
 import com.adforus.sdk.cubid.view.CubidReward
 import com.adforus.sdk.cubid.view.CubidRewardListener
 import com.adforus.sdk.cubid.view.CubidSize
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+
 /**
  * 📌 Cubid SDK 연동 샘플 사용 시 유의사항
  *
@@ -50,6 +54,8 @@ class MainActivity : AppCompatActivity() {
     private var cubidNative : CubidNative? = null
     private var cubidInterstitial : CubidInterstitial? = null
     private var cubidReward : CubidReward? = null
+
+    private val scope = MainScope()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,14 +86,14 @@ class MainActivity : AppCompatActivity() {
             // 초기화 성공 콜백에서 광고 로드 시작, 초기화 성공 콜백 호출 전 만든 모든 광고 인스턴스는 유효하지 않습니다.
             CuBidSettings.initialize(this@MainActivity, "OQf8T68ys9", "test-cubider", object : CuBidInitListener {
                 override fun onSuccess() {
-                    runOnUiThread {
+                    scope.launch {
                         statusInfoView.setStatus(AdStatus.INIT_SUCCESS)
                         initAds()
                     }
                 }
 
                 override fun onFailed(message: String) {
-                    runOnUiThread {
+                    scope.launch {
                         failedMessage = message
                         statusInfoView.setStatus(AdStatus.FAILED)
                     }
@@ -151,32 +157,40 @@ class MainActivity : AppCompatActivity() {
         cubidBanner = CubidBanner(this@MainActivity, "uyXywuOXTt")
         cubidBanner?.setBannerListener(listener = object : CubidBannerListener {
             override fun onLoad() {
-                bannerStatusView.setStatus(AdStatus.AD_LOADED)
-                bannerLoadView = cubidBanner
+                scope.launch {
+                    bannerStatusView.setStatus(AdStatus.AD_LOADED)
+                    bannerLoadView = cubidBanner
 
-                bannerButtonDisplay.isEnabled = true
-                bannerButtonVisible.apply {
-                    isChecked = bannerLoadView?.isVisible ?: false
-                    isEnabled = true
-                    text = if(isVisible) {
-                        resources.getText(R.string.hide)
-                    }else {
-                        resources.getText(R.string.show)
+                    bannerButtonDisplay.isEnabled = true
+                    bannerButtonVisible.apply {
+                        isChecked = bannerLoadView?.isVisible ?: false
+                        isEnabled = true
+                        text = if(isVisible) {
+                            resources.getText(R.string.hide)
+                        }else {
+                            resources.getText(R.string.show)
+                        }
                     }
                 }
             }
 
             override fun onLoadFail(errorInfo: CubidError) {
-                failedMessage = "[${errorInfo.getCode()}]\n${errorInfo.getMessage()}"
-                bannerStatusView.setStatus(AdStatus.FAILED)
+                scope.launch {
+                    failedMessage = "[${errorInfo.getCode()}]\n${errorInfo.getMessage()}"
+                    bannerStatusView.setStatus(AdStatus.FAILED)
+                }
             }
 
             override fun onClick() {
-                bannerStatusView.setStatus(AdStatus.AD_CLICK)
+                scope.launch {
+                    bannerStatusView.setStatus(AdStatus.AD_CLICK)
+                }
             }
 
             override fun onDisplay() {
-                bannerStatusView.setStatus(AdStatus.AD_DISPLAY)
+                scope.launch {
+                    bannerStatusView.setStatus(AdStatus.AD_DISPLAY)
+                }
             }
         })
 
@@ -257,31 +271,39 @@ class MainActivity : AppCompatActivity() {
         cubidNative?.setNativeListener(listener = object : CubidNativeAdListener {
 
             override fun onLoaded(view: CubidNativeView) {
-                btnDisplay.isEnabled = true
-                btnVisible.apply {
-                    isEnabled = true
-                    text = if(isVisible) {
-                        resources.getText(R.string.hide)
-                    }else {
-                        resources.getText(R.string.show)
+                scope.launch {
+                    btnDisplay.isEnabled = true
+                    btnVisible.apply {
+                        isEnabled = true
+                        text = if(isVisible) {
+                            resources.getText(R.string.hide)
+                        }else {
+                            resources.getText(R.string.show)
+                        }
                     }
+                    nativeLoadView = view
+                    btnVisible.isChecked = view.isVisible
+                    nativeStateView.setStatus(AdStatus.AD_LOADED)
                 }
-                nativeLoadView = view
-                btnVisible.isChecked = view.isVisible
-                nativeStateView.setStatus(AdStatus.AD_LOADED)
             }
 
             override fun onLoadFailed(error: CubidError) {
-                failedMessage = "[${error.getCode()}]\n${error.getMessage()}"
-                nativeStateView.setStatus(AdStatus.FAILED)
+                scope.launch {
+                    failedMessage = "[${error.getCode()}]\n${error.getMessage()}"
+                    nativeStateView.setStatus(AdStatus.FAILED)
+                }
             }
 
             override fun onClick() {
-                nativeStateView.setStatus(AdStatus.AD_CLICK)
+                scope.launch {
+                    nativeStateView.setStatus(AdStatus.AD_CLICK)
+                }
             }
 
             override fun onImpression() {
-                nativeStateView.setStatus(AdStatus.AD_DISPLAY)
+                scope.launch {
+                    nativeStateView.setStatus(AdStatus.AD_DISPLAY)
+                }
             }
         })
 
@@ -345,34 +367,48 @@ class MainActivity : AppCompatActivity() {
         cubidReward = CubidReward(this@MainActivity, "u365gjTAxA")
         cubidReward?.setRewardListener(listener = object : CubidRewardListener {
             override fun onLoad() {
-                btnShow.isEnabled = true
-                rewardStatusView.setStatus(AdStatus.AD_LOADED)
+                scope.launch {
+                    btnShow.isEnabled = true
+                    rewardStatusView.setStatus(AdStatus.AD_LOADED)
+                }
             }
 
             override fun onLoadFailed(error: CubidError) {
-                failedMessage = "[${error.getCode()}]\n${error.getMessage()}"
-                rewardStatusView.setStatus(AdStatus.FAILED)
+                scope.launch {
+                    failedMessage = "[${error.getCode()}]\n${error.getMessage()}"
+                    rewardStatusView.setStatus(AdStatus.FAILED)
+                }
             }
 
             override fun onSkip() {
-                rewardStatusView.setStatus(AdStatus.AD_SKIP)
+                scope.launch {
+                    rewardStatusView.setStatus(AdStatus.AD_SKIP)
+                }
             }
 
             override fun onComplete() {
-                rewardStatusView.setStatus(AdStatus.AD_COMPLETE)
+                scope.launch {
+                    rewardStatusView.setStatus(AdStatus.AD_COMPLETE)
+                }
             }
 
             override fun onShow() {
-                btnShow.isEnabled = false
-                rewardStatusView.setStatus(AdStatus.AD_SHOW)
+                scope.launch {
+                    btnShow.isEnabled = false
+                    rewardStatusView.setStatus(AdStatus.AD_SHOW)
+                }
             }
 
             override fun onClick() {
-                rewardStatusView.setStatus(AdStatus.AD_CLICK)
+                scope.launch {
+                    rewardStatusView.setStatus(AdStatus.AD_CLICK)
+                }
             }
 
             override fun onClose() {
-                rewardStatusView.setStatus(AdStatus.AD_CLOSE)
+                scope.launch {
+                    rewardStatusView.setStatus(AdStatus.AD_CLOSE)
+                }
             }
         })
 
@@ -412,26 +448,36 @@ class MainActivity : AppCompatActivity() {
         cubidInterstitial = CubidInterstitial(this@MainActivity, "5jd1pALQ5Z")
         cubidInterstitial?.setInterstitialListener(listener = object : CubidInterstitialListener {
             override fun onLoaded() {
-                btnShow.isEnabled = true
-                interstitialStatusView.setStatus(AdStatus.AD_LOADED)
+                scope.launch {
+                    btnShow.isEnabled = true
+                    interstitialStatusView.setStatus(AdStatus.AD_LOADED)
+                }
             }
 
             override fun onLoadFailed(error: CubidError) {
-                failedMessage = "[${error.getCode()}]\n${error.getMessage()}"
-                interstitialStatusView.setStatus(AdStatus.FAILED)
+                scope.launch {
+                    failedMessage = "[${error.getCode()}]\n${error.getMessage()}"
+                    interstitialStatusView.setStatus(AdStatus.FAILED)
+                }
             }
 
             override fun onShow() {
-                btnShow.isEnabled = false
-                interstitialStatusView.setStatus(AdStatus.AD_SHOW)
+                scope.launch {
+                    btnShow.isEnabled = false
+                    interstitialStatusView.setStatus(AdStatus.AD_SHOW)
+                }
             }
 
             override fun onClick() {
-                interstitialStatusView.setStatus(AdStatus.AD_CLICK)
+                scope.launch {
+                    interstitialStatusView.setStatus(AdStatus.AD_CLICK)
+                }
             }
 
             override fun onClose() {
-                interstitialStatusView.setStatus(AdStatus.AD_CLOSE)
+                scope.launch {
+                    interstitialStatusView.setStatus(AdStatus.AD_CLOSE)
+                }
             }
         })
 
@@ -472,6 +518,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        scope.cancel()
         super.onDestroy()
         release()
     }
