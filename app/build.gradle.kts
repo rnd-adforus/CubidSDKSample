@@ -60,5 +60,5 @@ dependencies {
     implementation("com.adforus.sdk:adsu:2.3.0")
     implementation("com.adforus.sdk:cubex:1.4.1")
     implementation("com.adforus.sdk:upan:1.3.0")
-    implementation("com.adforus.sdk:ual:1.0.0")
+    implementation("com.adforus.sdk:ual:1.0.1")
 }
