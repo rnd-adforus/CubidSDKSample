@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             // 아동을 타겟 하는 경우 초기화 전 다음 설정을 추가하여주세요.
 //            CuBidSettings.setChildMode(true);
             // 초기화 성공 콜백에서 광고 로드 시작, 초기화 성공 콜백 호출 전 만든 모든 광고 인스턴스는 유효하지 않습니다.
+            // userId는 공백을 허용합니다. 서버사이드 콜백 user_id 파람 값으로 입력됩니다.
             CuBidSettings.initialize(this, "OQf8T68ys9", "test-cubider", new CuBidInitListener() {
                 @Override
                 public void onSuccess() {
@@ -430,6 +431,10 @@ public class MainActivity extends AppCompatActivity {
                 if (cubidReward != null) {
                     // 광고 로드
                     cubidReward.load();
+
+                    // 서버사이드콜백 Custom Data 설정
+                    // 콜백 url 파람 이름 custom_data 으로 아래 입력한 값이 전달됩니다.
+                    // cubidReward.load("YOUR EXTRA DATA");
                 }
             }
         });

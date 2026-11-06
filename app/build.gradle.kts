@@ -8,7 +8,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.adforus.cubidsdksample"
+        applicationId = "com.adforus.cubidsdksample.dev"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -56,9 +56,9 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.0.1")
 
-    implementation("com.adforus.sdk:cubid:1.4.1")
-    implementation("com.adforus.sdk:adsu:2.3.0")
+    implementation("com.adforus.sdk:cubid:1.5.0")
+    implementation("com.adforus.sdk:adsu:2.4.0")
     implementation("com.adforus.sdk:cubex:1.4.1")
-    implementation("com.adforus.sdk:upan:1.3.0")
-    implementation("com.adforus.sdk:ual:1.0.1")
+    implementation("com.adforus.sdk:upan:1.4.0")
+    implementation("com.adforus.sdk:ual:1.1.0")
 }
