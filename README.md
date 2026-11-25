@@ -62,27 +62,29 @@ dependencyResolutionManagement {
 </br>
 
 #### 1-2. build file (app-level)
-앱 수준의 `build.gradle` 또는 `build.gradle.kts` 파일에 **Cubid SDK 및 필요한 Adapter SDK 의존성**을 추가해 주세요. `cubid` 모듈은 필수(Core) 의존성이며, 광고 기능을 활성화하려면 `adsu`, `cubex`, `upan` 중 **하나 이상의 Adapter 모듈을 함께 추가해야 합니다**.
+앱 수준의 `build.gradle` 또는 `build.gradle.kts` 파일에 **Cubid SDK 및 필요한 Adapter SDK 의존성**을 추가해 주세요. `cubid` 모듈은 필수(Core) 의존성이며, 광고 기능을 활성화하려면 `adsu`, `cubex`, `upan` 중 **하나 이상의 Adapter 모듈을 함께 추가해야 합니다**. [최신 버전 정보를 release에서 확인해주세요.](https://github.com/rnd-adforus/CubidSDKSample/releases)
 
 ```kotlin
 //[build.gradle.kts] - Kotlin
 dependencies {
-   implementation("com.adforus.sdk:cubid:1.5.0") // Core Module - required
-   implementation("com.adforus.sdk:cubex:1.4.1") // Adapter Module 
-   implementation("com.adforus.sdk:adsu:2.4.0") // Adapter Module
-   implementation("com.adforus.sdk:upan:1.4.1") // Adapter Module
-   implementation("com.adforus.sdk:ual:1.1.1")
+   implementation("com.adforus.sdk:cubid:x.y.z") // Core Module - required
+   implementation("com.adforus.sdk:cubex:x.y.z") // Adapter Module 
+   implementation("com.adforus.sdk:adsu:x.y.z") // Adapter Module
+   implementation("com.adforus.sdk:upan:x.y.z") // Adapter Module
+   implementation("com.adforus.sdk:ual:x.y.z") // Adapter Module
+   implementation("com.adforus.sdk:ufy:x.y.z") // Adapter Module
 }
 ```
 ###### OR
 ```groovy
 //[build.gradle] - Groovy
 dependencies {
-   implementation 'com.adforus.sdk:cubid:1.5.0' // Core Module - required
-   implementation 'com.adforus.sdk:cubex:1.4.1' // Adapter Module 
-   implementation 'com.adforus.sdk:adsu:2.4.0' // Adapter Module
-   implementation 'com.adforus.sdk:upan:1.4.1' // Adapter Module
-   implementation 'com.adforus.sdk:ual:1.1.1' // Adapter Module
+   implementation 'com.adforus.sdk:cubid:x.y.z' // Core Module - required
+   implementation 'com.adforus.sdk:cubex:x.y.z' // Adapter Module 
+   implementation 'com.adforus.sdk:adsu:x.y.z' // Adapter Module
+   implementation 'com.adforus.sdk:upan:x.y.z' // Adapter Module
+   implementation 'com.adforus.sdk:ual:x.y.z' // Adapter Module
+   implementation 'com.adforus.sdk:ufy:x.y.z' // Adapter Module
 }
 ```
 
