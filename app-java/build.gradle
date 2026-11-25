@@ -43,9 +43,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
 
-    implementation("com.adforus.sdk:cubid:1.6.0")
-    implementation("com.adforus.sdk:adsu:2.5.0")
-    implementation("com.adforus.sdk:cubex:1.4.1")
-    implementation("com.adforus.sdk:upan:1.4.1")
-    implementation("com.adforus.sdk:ual:1.1.1")
+    implementation("com.adforus.sdk:cubid:1.7.0")
+    implementation("com.adforus.sdk:adsu:2.5.1")
+    implementation("com.adforus.sdk:cubex:1.5.0")
+    implementation("com.adforus.sdk:upan:1.4.2")
+    implementation("com.adforus.sdk:ual:1.2.0")
+    implementation("com.adforus.sdk:ufy:1.0.0")
 }

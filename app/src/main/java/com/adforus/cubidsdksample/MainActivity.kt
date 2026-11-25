@@ -149,7 +149,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 배너 광고 인스턴스 준비
-        cubidBanner = CubidBanner(this@MainActivity, "uyXywuOXTt")
+        cubidBanner = CubidBanner(this@MainActivity, when(size)  {
+            CubidSize.TYPE_320X50 -> "uyXywuOXTt"
+            CubidSize.TYPE_300X250 -> "FpMXfTOI1v"
+            CubidSize.TYPE_320X100 -> "qyoc6iVP2X"
+        })
         cubidBanner?.setBannerListener(listener = object : CubidBannerListener {
             override fun onLoad() {
                 bannerStatusView.setStatus(AdStatus.AD_LOADED)

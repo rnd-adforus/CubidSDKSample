@@ -137,18 +137,21 @@ public class MainActivity extends AppCompatActivity {
         bannerStatusView.setVisibility(View.VISIBLE);
 
         final CubidSize[] size = {CubidSize.TYPE_320X50};
+        final String[] adCode = {"uyXywuOXTt"};
         bannerSizeRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if(checkedId == R.id.radio_320X100) {
                 size[0] = CubidSize.TYPE_320X100;
+                adCode[0] = "qyoc6iVP2X";
             }else if (checkedId == R.id.radio_300X250) {
                 size[0] = CubidSize.TYPE_300X250;
+                adCode[0] = "FpMXfTOI1v";
             }else {
                 size[0] = CubidSize.TYPE_320X50;
             }
         });
 
         // 배너 광고 인스턴스 준비
-        cubidBanner = new CubidBanner(this, "uyXywuOXTt");
+        cubidBanner = new CubidBanner(this, adCode[0]);
         cubidBanner.setBannerListener(new CubidBannerListener() {
             @Override
             public void onLoad() {
